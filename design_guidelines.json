@@ -1,0 +1,117 @@
+{
+  "theme": "dark",
+  "archetype": "Retro-Futurism & Swiss High-Contrast (The Terminal Look)",
+  "typography": {
+    "headings": {
+      "font_family": "Chivo",
+      "weights": ["light", "black", "bold"],
+      "usage": "Use 'font-black' for primary dashboard titles and 'font-light' for secondary section headers to create radical weight contrast."
+    },
+    "body": {
+      "font_family": "JetBrains Mono",
+      "weights": ["regular", "medium"],
+      "usage": "Used for all tabular data, tool metadata, command line scripts, and general body text to enforce the developer/CLI aesthetic."
+    },
+    "scale": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tighter",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight",
+      "h3": "text-xl sm:text-2xl",
+      "body": "text-sm md:text-base leading-relaxed",
+      "labels": "text-xs tracking-[0.2em] uppercase"
+    }
+  },
+  "colors": {
+    "background": {
+      "primary": "#050505",
+      "secondary": "#0A0A0A",
+      "tertiary": "#121212"
+    },
+    "text": {
+      "primary": "#F8FAFC",
+      "secondary": "#94A3B8",
+      "muted": "#475569"
+    },
+    "accent": {
+      "primary": "#EAB308",
+      "secondary": "#00E5FF",
+      "danger": "#DC2626",
+      "success": "#22C55E"
+    },
+    "borders": {
+      "default": "rgba(255, 255, 255, 0.1)",
+      "focus": "#00E5FF"
+    },
+    "usage_rules": "Strict monochrome base (Deep Void Black to Stark White). Accent colors (Cyber Yellow, Signal Red, Laser Green) are used ONLY for functional states (validation, active feeds, command triggers). No full-screen gradients."
+  },
+  "visual_enhancers": {
+    "surfaces": {
+      "dashboard_cards": "Flat solid background (#0A0A0A), 1px solid border (rgba(255, 255, 255, 0.1)), NO shadow. Hover state: border color brightens to rgba(255,255,255,0.3) with a subtle -translate-y-1 lift.",
+      "header_nav": "Crystal Glassmorphism: bg-black/60 with backdrop-blur-xl and a delicate border-b border-white/10. NEVER fully transparent.",
+      "terminal_windows": "For install commands, use a pure #000000 background, 1px border-white/10, and JetBrains Mono font. Add a subtle drop-shadow-[0_0_8px_rgba(34,197,94,0.3)] on the text for a glowing effect."
+    },
+    "borders": "Grid Borders: Expose the skeleton. Use border-collapse on containers and 1px border-white/10 on grid items to create a technical, data-heavy look.",
+    "textures": "Include a subtle noise/grain SVG overlay fixed over the background with pointer-events-none and 3% opacity to kill the digital flatness."
+  },
+  "grids_and_layouts": {
+    "strategy": "The Bento Grid Protocol (Mode B: High Density Grid)",
+    "container": "grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 or gap-6",
+    "spans": {
+      "live_feed": "col-span-1 row-span-2 (Tall narrow list on the right or left for the 08:44 timestamped feed).",
+      "main_data_table": "col-span-2 md:col-span-3 (Aggregated Top 50 AI tools)."
+    },
+    "spacing": "Generous internal padding for cards (p-6 or p-8) to prevent text collision with borders. Use Optical Alignment for icons next to text.",
+    "constraints": "Images/visuals must not exceed 80vh on mobile. Max layout width container with mx-auto."
+  },
+  "components": {
+    "buttons": "Sharp, rectangular pill or flat styles. NO over-rounded corners. Hover state: hover:bg-white/10 hover:text-white. Active state explicitly defined.",
+    "inputs": "Shadcn standard but customized to pure dark mode: bg-black border-white/10 text-white focus:ring-1 focus:ring-[#00E5FF].",
+    "tables": "Dense, minimalist. Use border-b border-white/10 for rows. Striped rows (bg-white/[0.02]) for readability.",
+    "tabs": "Override default Shadcn h-9 to h-auto to prevent cutoff. Sharp borders.",
+    "toasts": "Use Sonner component with dark theme, sharp corners, and 1px border-white/10."
+  },
+  "motion": {
+    "interactions": "Hover states must increase contrast and border brightness. Buttons scale down 0.98 on active.",
+    "page_load": "Staggered fade-in (Framer Motion) for grid items. Delay each item by 0.05s.",
+    "live_feed": "Use react-fast-marquee for a subtle, constant upward or horizontal scroll of the '1111 aggregated sites' status ticker.",
+    "accessibility": "Respect prefers-reduced-motion. Do not use generic 'transition: all'."
+  },
+  "accessibility": {
+    "contrast": "Ensure minimum 4.5:1 ratio for normal text. Use APCA calculator guidelines.",
+    "focus": "All interactive elements must have a visible focus ring (focus:ring-2 focus:ring-[#00E5FF] focus:outline-none).",
+    "testing": "All interactive and key informational elements MUST include 'data-testid' attribute (e.g., data-testid='copy-install-command-btn')."
+  },
+  "media": {
+    "images": [
+      {
+        "url": "https://images.pexels.com/photos/1089438/pexels-photo-1089438.jpeg",
+        "category": "hero_background",
+        "description": "Abstract green matrix code background to reinforce the backend/CLI theme."
+      },
+      {
+        "url": "https://images.pexels.com/photos/37730212/pexels-photo-37730212.jpeg",
+        "category": "infrastructure_context",
+        "description": "Server rack imagery for DevOps/Kubernetes related modules."
+      },
+      {
+        "url": "https://images.pexels.com/photos/28122495/pexels-photo-28122495.jpeg",
+        "category": "accent_visual",
+        "description": "Cyberpunk city neon to be used at low opacity for auth/login screen background."
+      }
+    ],
+    "icons": {
+      "library": "@phosphor-icons/react",
+      "usage": "Use Phosphor Icons (duotone or bold) for a dense, technical developer tool aesthetic. Run 'yarn add @phosphor-icons/react'."
+    }
+  },
+  "universal_guidelines_for_main_agent": [
+    "Prioritize depth through layered borders (1px solid over flat backgrounds) rather than drop shadows, sticking to the technical dashboard vibe.",
+    "You MUST NOT apply universal transition (e.g., transition: all). Add transitions for specific properties.",
+    "You MUST NOT center align the app container in App.css. Keep text logically aligned (left for data, centered only for specific empty states).",
+    "Never use generic AI emojis (🤖🧠) for icons. Use the specified icon library (@phosphor-icons/react).",
+    "Always explicitly set text color on hover (e.g., hover:bg-white hover:text-black).",
+    "Do NOT use HTML native date pickers or select dropdowns. ALWAYS use customized Shadcn UI components.",
+    "Implement the '1111 sources' validation as a technical status indicator, using Terminal-like output displays.",
+    "Ensure the '08:44 Germany Time' refresh timestamp is prominently displayed as a tactical dashboard widget.",
+    "Use pure `.js` and `.jsx` extensions as this environment uses JavaScript, not TypeScript."
+  ]
+}
